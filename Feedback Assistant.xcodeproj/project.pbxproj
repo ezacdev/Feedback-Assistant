@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		164D50B52EF2E22C00815184 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 164D50B42EF2E22300815184 /* README.md */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		164D4FE52EF02AAD00815184 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -27,6 +31,7 @@
 		164D4FD72EF02AAC00815184 /* Feedback Assistant.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Feedback Assistant.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		164D4FE42EF02AAD00815184 /* Feedback AssistantTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Feedback AssistantTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		164D4FEE2EF02AAD00815184 /* Feedback AssistantUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Feedback AssistantUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		164D50B42EF2E22300815184 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -75,6 +80,7 @@
 		164D4FCE2EF02AAC00815184 = {
 			isa = PBXGroup;
 			children = (
+				164D50B42EF2E22300815184 /* README.md */,
 				164D4FD92EF02AAC00815184 /* Feedback Assistant */,
 				164D4FE72EF02AAD00815184 /* Feedback AssistantTests */,
 				164D4FF12EF02AAD00815184 /* Feedback AssistantUITests */,
@@ -236,6 +242,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				164D50B52EF2E22C00815184 /* README.md in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
