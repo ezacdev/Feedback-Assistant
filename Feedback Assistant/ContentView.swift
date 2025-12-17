@@ -1,10 +1,3 @@
-//
-//  ContentView.swift
-//  Feedback Assistant
-//
-//  Created by Yaroslav Pleskach on 12/15/25.
-//
-
 import SwiftUI
 
 struct ContentView: View {
