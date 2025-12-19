@@ -3,7 +3,7 @@ import CoreData
 
 class DataController: ObservableObject {
     let container: NSPersistentContainer
-    
+
     @Published var selectedFilter: Filter? = Filter.all
 
     static var preview: DataController = {
@@ -20,6 +20,23 @@ class DataController: ObservableObject {
                 filePath: "/dev/null"
             )
         }
+        
+        // icloud synchronizing data between devices
+
+        container.viewContext.automaticallyMergesChangesFromParent = true
+        container.viewContext.mergePolicy =
+            NSMergePolicy.mergeByPropertyObjectTrump
+
+        container.persistentStoreDescriptions.first?.setOption(
+            true as NSNumber,
+            forKey: NSPersistentStoreRemoteChangeNotificationPostOptionKey
+        )
+        NotificationCenter.default.addObserver(
+            forName: .NSPersistentStoreRemoteChange,
+            object: container.persistentStoreCoordinator,
+            queue: .main,
+            using: remoteStoreChanged
+        )
 
         container.loadPersistentStores { storeDescription, error in
             if let error {
@@ -93,4 +110,10 @@ class DataController: ObservableObject {
             )
         }
     }
+
+    // icloud synchronizing data between devices
+    func remoteStoreChanged(_ notification: Notification) {
+        objectWillChange.send()
+    }
+
 }
