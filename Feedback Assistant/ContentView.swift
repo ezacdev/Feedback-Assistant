@@ -25,7 +25,7 @@ struct ContentView: View {
     }
 
     var body: some View {
-        List {
+        List(selection: $dataController.selectedIssue) {
             ForEach(issues) { issue in
                 IssueRow(issue: issue)
             }
@@ -33,7 +33,7 @@ struct ContentView: View {
         }
         .navigationTitle("Issues")
     }
-    
+
     func delete(_ offsets: IndexSet) {
         for offset in offsets {
             let item = issues[offset]
