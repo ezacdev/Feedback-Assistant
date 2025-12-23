@@ -2,19 +2,40 @@ import Combine
 import CoreData
 
 class DataController: ObservableObject {
-    
+
     private var saveTask: Task<Void, Error>?
-    
+
     let container: NSPersistentContainer
 
     @Published var selectedFilter: Filter? = Filter.all
     @Published var selectedIssue: Issue?
+    @Published var filterText = ""
+    @Published var filterTokens = [Tag]()
 
     static var preview: DataController = {
         let dataController = DataController(inMemory: true)
         dataController.createSampleData()
         return dataController
     }()
+
+    var suggestedFilterTokens: [Tag] {
+        guard filterText.starts(with: "#") else {
+            return []
+        }
+
+        let trimmedFilterText = String(filterText.dropFirst())
+            .trimmingCharacters(in: .whitespaces)
+        let request = Tag.fetchRequest()
+
+        if trimmedFilterText.isEmpty == false {
+            request.predicate = NSPredicate(
+                format: "name CONTAINS[c] %@",
+                trimmedFilterText
+            )
+        }
+
+        return (try? container.viewContext.fetch(request).sorted()) ?? []
+    }
 
     init(inMemory: Bool = false) {
         container = NSPersistentContainer(name: "Main")
@@ -138,4 +159,58 @@ class DataController: ObservableObject {
             save()
         }
     }
+
+    func issuesForSelectedFilter() -> [Issue] {
+        let filter = selectedFilter ?? .all
+
+        // Collect all predicates that should be applied
+        var predicates = [NSPredicate]()
+
+        if let tag = filter.tag {
+            // Filter issues that contain the selected tag
+            let tagPredicate = NSPredicate(format: "tags CONTAINS %@", tag)
+            predicates.append(tagPredicate)
+        } else {
+            // Filter issues newer than the minimum modification date
+            let datePredicate = NSPredicate(
+                format: "modificationDate > %@",
+                filter.minModificationDate as NSDate
+            )
+            predicates.append(datePredicate)
+        }
+
+        let trimmedFilterText = filterText.trimmingCharacters(in: .whitespaces)
+
+        if trimmedFilterText.isEmpty == false {
+            // Match search text against title or content (case-insensitive)
+            let titlePredicate = NSPredicate(
+                format: "title CONTAINS[c] %@",
+                trimmedFilterText
+            )
+            let contentPredicate = NSPredicate(
+                format: "content CONTAINS[c] %@",
+                trimmedFilterText
+            )
+
+            // Either title OR content must match
+            let combinedPredicate = NSCompoundPredicate(
+                orPredicateWithSubpredicates: [
+                    titlePredicate,
+                    contentPredicate,
+                ]
+            )
+            predicates.append(combinedPredicate)
+        }
+        
+        // Build fetch request with all predicates combined using AND
+        let request = Issue.fetchRequest()
+        request.predicate = NSCompoundPredicate(
+            andPredicateWithSubpredicates: predicates
+        )
+
+        // Fetch and sort results
+        let allIssues = (try? container.viewContext.fetch(request)) ?? []
+        return allIssues.sorted()
+    }
+
 }
