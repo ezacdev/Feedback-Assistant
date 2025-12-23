@@ -2,6 +2,9 @@ import Combine
 import CoreData
 
 class DataController: ObservableObject {
+    
+    private var saveTask: Task<Void, Error>?
+    
     let container: NSPersistentContainer
 
     @Published var selectedFilter: Filter? = Filter.all
@@ -127,4 +130,12 @@ class DataController: ObservableObject {
         return difference.sorted()
     }
 
+    func queueSave() {
+        saveTask?.cancel()
+
+        saveTask = Task { @MainActor in
+            try await Task.sleep(for: .seconds(3))
+            save()
+        }
+    }
 }
