@@ -1,6 +1,15 @@
 import Combine
 import CoreData
 
+enum SortType: String {
+    case dateCreated = "creationDate"
+    case dateModified = "modificationDate"
+}
+
+enum Status {
+    case all, open, closed
+}
+
 class DataController: ObservableObject {
 
     private var saveTask: Task<Void, Error>?
@@ -11,6 +20,12 @@ class DataController: ObservableObject {
     @Published var selectedIssue: Issue?
     @Published var filterText = ""
     @Published var filterTokens = [Tag]()
+
+    @Published var filterEnabled = false
+    @Published var filterPriority = -1
+    @Published var filterStatus = Status.all
+    @Published var sortType = SortType.dateCreated
+    @Published var sortNewestFirst = true
 
     static var preview: DataController = {
         let dataController = DataController(inMemory: true)
@@ -201,12 +216,34 @@ class DataController: ObservableObject {
             )
             predicates.append(combinedPredicate)
         }
-        
+
+        if filterEnabled {
+            if filterPriority >= 0 {
+                let priorityFilter = NSPredicate(
+                    format: "priority = %d",
+                    filterPriority
+                )
+                predicates.append(priorityFilter)
+            }
+
+            if filterStatus != .all {
+                let lookForClosed = filterStatus == .closed
+                let statusFilter = NSPredicate(
+                    format: "completed = %@",
+                    NSNumber(value: lookForClosed)
+                )
+                predicates.append(statusFilter)
+            }
+        }
+
         // Build fetch request with all predicates combined using AND
         let request = Issue.fetchRequest()
         request.predicate = NSCompoundPredicate(
             andPredicateWithSubpredicates: predicates
         )
+        request.sortDescriptors = [
+            NSSortDescriptor(key: sortType.rawValue, ascending: sortNewestFirst)
+        ]
 
         // Fetch and sort results
         let allIssues = (try? container.viewContext.fetch(request)) ?? []
