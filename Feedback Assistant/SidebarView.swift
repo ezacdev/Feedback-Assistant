@@ -10,6 +10,8 @@ struct SidebarView: View {
     @State private var tagToRename: Tag?
     @State private var renamingTag = false
     @State private var tagName = ""
+    
+    @State private var showingAwards = false
 
     let smartFilters: [Filter] = [.all, .recent]
 
@@ -51,6 +53,9 @@ struct SidebarView: View {
             Button("Cancel", role: .cancel) {}
             TextField("New name", text: $tagName)
         }
+        .sheet(isPresented: $showingAwards) {
+            AwardsView()
+        }
         .toolbar {
             #if DEBUG
                 Button {
@@ -63,6 +68,12 @@ struct SidebarView: View {
 
             Button(action: dataController.newTag) {
                 Label("Add tag", systemImage: "plus")
+            }
+            
+            Button {
+                showingAwards.toggle()
+            } label: {
+                Label("Show awards", systemImage: "rosette")
             }
         }
     }
