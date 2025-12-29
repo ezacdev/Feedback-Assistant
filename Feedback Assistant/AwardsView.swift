@@ -6,8 +6,7 @@ struct AwardsView: View {
     @State private var selectedAward = Award.example
     @State private var showingAwardDetails = false
     @State private var showingAwards = false
-    
-    
+
     var awardTitle: String {
         if dataController.hasEarned(award: selectedAward) {
             return "Unlocked: \(selectedAward.name)"
@@ -39,6 +38,11 @@ struct AwardsView: View {
                                         ? Color(award.color)
                                         : .secondary.opacity(0.5)
                                 )
+                                .accessibilityLabel(
+                                    dataController.hasEarned(award: award)
+                                        ? "Unlocked: \(award.name)" : "Locked"
+                                )
+                                .accessibilityHint(award.description)
                         }
                     }
                 }

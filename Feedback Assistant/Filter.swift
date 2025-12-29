@@ -16,6 +16,10 @@ struct Filter: Identifiable, Hashable {
     var minModificationDate = Date.distantPast
     var tag: Tag?
     
+    var activeIssuesCount: Int {
+        tag?.tagActiveIssues.count ?? 0
+    }
+    
     func hash(into hasher: inout Hasher) {
         hasher.combine(id)
     }
