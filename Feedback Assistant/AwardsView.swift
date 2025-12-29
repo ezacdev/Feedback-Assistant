@@ -9,9 +9,15 @@ struct AwardsView: View {
 
     var awardTitle: String {
         if dataController.hasEarned(award: selectedAward) {
-            return "Unlocked: \(selectedAward.name)"
+            return String(
+                format: NSLocalizedString(
+                    "Unlocked: %@",
+                    comment: "Label shown when an award is unlocked"
+                ),
+                selectedAward.name
+            )
         } else {
-            return "Locked"
+            return NSLocalizedString("Locked", comment: "Locked award")
         }
     }
 

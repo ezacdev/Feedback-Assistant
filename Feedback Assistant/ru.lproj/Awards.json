@@ -1,0 +1,162 @@
+[
+    {
+        "name": "Первые шаги",
+        "description": "Создайте свою первую задачу.",
+        "color": "Light Blue",
+        "criterion": "issues",
+        "value": 1,
+        "image": "figure.walk"
+    },
+    {
+        "name": "Отличное начало",
+        "description": "Создайте 10 задач.",
+        "color": "Light Blue",
+        "criterion": "issues",
+        "value": 10,
+        "image": "hand.thumbsup.fill"
+    },
+    {
+        "name": "Движение вперёд",
+        "description": "Создайте 20 задач.",
+        "color": "Light Blue",
+        "criterion": "issues",
+        "value": 20,
+        "image": "tray.and.arrow.up.fill"
+    },
+    {
+        "name": "Набирая скорость",
+        "description": "Создайте 50 задач.",
+        "color": "Light Blue",
+        "criterion": "issues",
+        "value": 50,
+        "image": "speedometer"
+    },
+    {
+        "name": "На гребне волны",
+        "description": "Создайте 100 задач.",
+        "color": "Light Blue",
+        "criterion": "issues",
+        "value": 100,
+        "image": "dot.radiowaves.left.and.right"
+    },
+    {
+        "name": "Высокая производительность",
+        "description": "Создайте 250 задач.",
+        "color": "Light Blue",
+        "criterion": "issues",
+        "value": 250,
+        "image": "square.stack.3d.up.fill"
+    },
+    {
+        "name": "Звёздный результат",
+        "description": "Создайте 500 задач.",
+        "color": "Light Blue",
+        "criterion": "issues",
+        "value": 500,
+        "image": "star.circle.fill"
+    },
+    {
+        "name": "Чемпион",
+        "description": "Создайте 1000 задач.",
+        "color": "Light Blue",
+        "criterion": "issues",
+        "value": 1000,
+        "image": "crown.fill"
+    },
+    {
+        "name": "Первые закрытия",
+        "description": "Закройте свою первую задачу.",
+        "color": "Green",
+        "criterion": "closed",
+        "value": 1,
+        "image": "checkmark.shield.fill"
+    },
+    {
+        "name": "В ударе",
+        "description": "Закройте 10 задач.",
+        "color": "Green",
+        "criterion": "closed",
+        "value": 10,
+        "image": "guitars.fill"
+    },
+    {
+        "name": "20 — уже серьёзно",
+        "description": "Закройте 20 задач.",
+        "color": "Green",
+        "criterion": "closed",
+        "value": 20,
+        "image": "20.square.fill"
+    },
+    {
+        "name": "Точно в цель",
+        "description": "Закройте 50 задач.",
+        "color": "Green",
+        "criterion": "closed",
+        "value": 50,
+        "image": "target"
+    },
+    {
+        "name": "На высоте",
+        "description": "Закройте 100 задач.",
+        "color": "Green",
+        "criterion": "closed",
+        "value": 100,
+        "image": "airplane.circle.fill"
+    },
+    {
+        "name": "Огонь!",
+        "description": "Закройте 250 задач.",
+        "color": "Green",
+        "criterion": "closed",
+        "value": 250,
+        "image": "flame.fill"
+    },
+    {
+        "name": "Главный исполнитель",
+        "description": "Закройте 500 задач.",
+        "color": "Green",
+        "criterion": "closed",
+        "value": 500,
+        "image": "text.badge.checkmark"
+    },
+    {
+        "name": "Бум!",
+        "description": "Закройте 1000 задач.",
+        "color": "Green",
+        "criterion": "closed",
+        "value": 1000,
+        "image": "bolt.circle.fill"
+    },
+    {
+        "name": "Игра с тегами",
+        "description": "Создайте свой первый тег.",
+        "color": "Gold",
+        "criterion": "tags",
+        "value": 1,
+        "image": "tag.fill"
+    },
+    {
+        "name": "Борьба тегов",
+        "description": "Создайте 10 тегов.",
+        "color": "Gold",
+        "criterion": "tags",
+        "value": 10,
+        "image": "tag.circle.fill"
+    },
+    {
+        "name": "Мастер тегов",
+        "description": "Создайте 50 тегов.",
+        "color": "Gold",
+        "criterion": "tags",
+        "value": 50,
+        "image": "square.grid.3x1.folder.fill.badge.plus"
+    },
+    {
+        "name": "Поддержка проекта",
+        "description": "Вы приобрели премиум-доступ.",
+        "color": "Purple",
+        "criterion": "unlock",
+        "value": 0,
+        "image": "dollarsign.square.fill"
+    }
+]

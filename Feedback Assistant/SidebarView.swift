@@ -10,7 +10,7 @@ struct SidebarView: View {
     @State private var tagToRename: Tag?
     @State private var renamingTag = false
     @State private var tagName = ""
-    
+
     @State private var showingAwards = false
 
     let smartFilters: [Filter] = [.all, .recent]
@@ -23,15 +23,18 @@ struct SidebarView: View {
 
     var body: some View {
         List(selection: $dataController.selectedFilter) {
-            Section("Smart Filters") {
+            Section(LocalizedStringKey("Smart Filters")) {
                 ForEach(smartFilters) { filter in
                     NavigationLink(value: filter) {
-                        Label(filter.name, systemImage: filter.icon)
+                        Label(
+                            LocalizedStringKey(filter.name),
+                            systemImage: filter.icon
+                        )
                     }
                 }
             }
 
-            Section("Tags") {
+            Section(LocalizedStringKey("Tags")) {
                 ForEach(tagFilters) { filter in
                     NavigationLink(value: filter) {
                         Label(filter.name, systemImage: filter.icon)
@@ -40,9 +43,9 @@ struct SidebarView: View {
                                 Button {
                                     rename(filter)
                                 } label: {
-                                    Label("Rename", systemImage: "pencil")
+                                    Label(LocalizedStringKey("Rename"), systemImage: "pencil")
                                 }
-                                
+
                                 Button(role: .destructive) {
                                     delete(filter)
                                 } label: {
@@ -51,17 +54,19 @@ struct SidebarView: View {
                             }
                             .accessibilityElement()
                             .accessibilityLabel(filter.name)
-                            .accessibilityHint("^[\(filter.activeIssuesCount) issue](inflect: true)")
+                            .accessibilityHint(
+                                "\(filter.activeIssuesCount) issues"
+                            )
                     }
                 }
                 .onDelete(perform: delete)
             }
         }
         .navigationTitle("Filters")
-        .alert("Rename tag", isPresented: $renamingTag) {
-            Button("OK", action: completeRename)
-            Button("Cancel", role: .cancel) {}
-            TextField("New name", text: $tagName)
+        .alert(LocalizedStringKey("Rename tag"), isPresented: $renamingTag) {
+            Button(LocalizedStringKey("OK"), action: completeRename)
+            Button(LocalizedStringKey("Cancel"), role: .cancel) {}
+            TextField(LocalizedStringKey("New name"), text: $tagName)
         }
         .sheet(isPresented: $showingAwards) {
             AwardsView()
@@ -72,18 +77,18 @@ struct SidebarView: View {
                     dataController.deleteAll()
                     dataController.createSampleData()
                 } label: {
-                    Label("ADD SAMPLES", systemImage: "flame")
+                    Label(LocalizedStringKey("ADD SAMPLES"), systemImage: "flame")
                 }
             #endif
 
             Button(action: dataController.newTag) {
-                Label("Add tag", systemImage: "plus")
+                Label(LocalizedStringKey("Add tag"), systemImage: "plus")
             }
-            
+
             Button {
                 showingAwards.toggle()
             } label: {
-                Label("Show awards", systemImage: "rosette")
+                Label(LocalizedStringKey("Show awards"), systemImage: "rosette")
             }
         }
     }
@@ -94,7 +99,7 @@ struct SidebarView: View {
             dataController.delete(item)
         }
     }
-    
+
     func delete(_ filter: Filter) {
         guard let tag = filter.tag else { return }
         dataController.delete(tag)

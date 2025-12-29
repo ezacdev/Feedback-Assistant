@@ -27,10 +27,14 @@ extension Issue {
     
     var issueStatus: String {
         if completed {
-            return "Closed"
+            return NSLocalizedString("Closed", comment: "Closed issue")
         } else {
-            return "Open"
+            return NSLocalizedString("Open", comment: "Open issue")
         }
+    }
+    
+    var issueFormattedCreationDate: String {
+        issueCreationDate.formatted(date: .numeric, time: .omitted)
     }
     
     var issueTagsList: String {
