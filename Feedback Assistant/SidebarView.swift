@@ -25,39 +25,17 @@ struct SidebarView: View {
         List(selection: $dataController.selectedFilter) {
             Section(LocalizedStringKey("Smart Filters")) {
                 ForEach(smartFilters) { filter in
-                    NavigationLink(value: filter) {
-                        Label(
-                            LocalizedStringKey(filter.name),
-                            systemImage: filter.icon
-                        )
-                    }
+                    SmartFilterRow(filter: filter)
                 }
             }
 
             Section(LocalizedStringKey("Tags")) {
                 ForEach(tagFilters) { filter in
-                    NavigationLink(value: filter) {
-                        Label(filter.name, systemImage: filter.icon)
-                            .badge(filter.activeIssuesCount)
-                            .contextMenu {
-                                Button {
-                                    rename(filter)
-                                } label: {
-                                    Label(LocalizedStringKey("Rename"), systemImage: "pencil")
-                                }
-
-                                Button(role: .destructive) {
-                                    delete(filter)
-                                } label: {
-                                    Label("Delete", systemImage: "trash")
-                                }
-                            }
-                            .accessibilityElement()
-                            .accessibilityLabel(filter.name)
-                            .accessibilityHint(
-                                "\(filter.activeIssuesCount) issues"
-                            )
-                    }
+                    UserFilterRow(
+                        filter: filter,
+                        rename: rename,
+                        delete: delete
+                    )
                 }
                 .onDelete(perform: delete)
             }
@@ -72,24 +50,7 @@ struct SidebarView: View {
             AwardsView()
         }
         .toolbar {
-            #if DEBUG
-                Button {
-                    dataController.deleteAll()
-                    dataController.createSampleData()
-                } label: {
-                    Label(LocalizedStringKey("ADD SAMPLES"), systemImage: "flame")
-                }
-            #endif
-
-            Button(action: dataController.newTag) {
-                Label(LocalizedStringKey("Add tag"), systemImage: "plus")
-            }
-
-            Button {
-                showingAwards.toggle()
-            } label: {
-                Label(LocalizedStringKey("Show awards"), systemImage: "rosette")
-            }
+            SidebarViewToolbar(showingAwards: $showingAwards)
         }
     }
 
