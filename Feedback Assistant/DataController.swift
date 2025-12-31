@@ -78,7 +78,7 @@ class DataController: ObservableObject {
             using: remoteStoreChanged
         )
 
-        container.loadPersistentStores { storeDescription, error in
+        container.loadPersistentStores { _, error in
             if let error {
                 fatalError(
                     "Fatal error loading store: \(error.localizedDescription)"
@@ -90,14 +90,14 @@ class DataController: ObservableObject {
     func createSampleData() {
         let viewContext = container.viewContext
 
-        for i in 1...5 {
+        for tagCounter in 1...5 {
             let tag = Tag(context: viewContext)
             tag.id = UUID()
-            tag.name = "Tag \(i)"
+            tag.name = "Tag \(tagCounter)"
 
-            for j in 1...10 {
+            for issueCounter in 1...10 {
                 let issue = Issue(context: viewContext)
-                issue.title = "Issue \(i)-\(j)"
+                issue.title = "Issue \(tagCounter)-\(issueCounter)"
                 issue.content = "Description goes here"
                 issue.creationDate = .now
                 issue.completed = Bool.random()
@@ -213,7 +213,7 @@ class DataController: ObservableObject {
             let combinedPredicate = NSCompoundPredicate(
                 orPredicateWithSubpredicates: [
                     titlePredicate,
-                    contentPredicate,
+                    contentPredicate
                 ]
             )
             predicates.append(combinedPredicate)

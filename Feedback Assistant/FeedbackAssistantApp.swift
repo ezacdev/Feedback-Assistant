@@ -2,7 +2,7 @@ import CoreData
 import SwiftUI
 
 @main
-struct Feedback_AssistantApp: App {
+struct FeedbackAssistantApp: App {
 
     @StateObject var dataController = DataController()
     @Environment(\.scenePhase) var scenePhase

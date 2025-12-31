@@ -24,7 +24,7 @@ extension Issue {
         let result = tags?.allObjects as? [Tag] ?? []
         return result.sorted()
     }
-    
+
     var issueStatus: String {
         if completed {
             return NSLocalizedString("Closed", comment: "Closed issue")
@@ -32,11 +32,11 @@ extension Issue {
             return NSLocalizedString("Open", comment: "Open issue")
         }
     }
-    
+
     var issueFormattedCreationDate: String {
         issueCreationDate.formatted(date: .numeric, time: .omitted)
     }
-    
+
     var issueTagsList: String {
         guard let tags else { return "No tags" }
 
