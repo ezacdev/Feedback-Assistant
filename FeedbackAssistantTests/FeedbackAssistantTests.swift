@@ -1,10 +1,3 @@
-//
-//  Feedback_AssistantTests.swift
-//  Feedback AssistantTests
-//
-//  Created by Yaroslav Pleskach on 12/15/25.
-//
-
 import Testing
 
 struct FeedbackAssistantTests {

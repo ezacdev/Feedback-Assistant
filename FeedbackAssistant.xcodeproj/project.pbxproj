@@ -24,20 +24,20 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		164D4FD72EF02AAC00815184 /* Feedback Assistant.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Feedback Assistant.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		164D4FE42EF02AAD00815184 /* Feedback AssistantTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Feedback AssistantTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		164D4FEE2EF02AAD00815184 /* Feedback AssistantUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Feedback AssistantUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		164D4FD72EF02AAC00815184 /* FeedbackAssistant.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FeedbackAssistant.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		164D4FE42EF02AAD00815184 /* FeedbackAssistantTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FeedbackAssistantTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		164D4FEE2EF02AAD00815184 /* FeedbackAssistantUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FeedbackAssistantUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		164D4FD92EF02AAC00815184 /* Feedback Assistant */ = {
+		164D4FD92EF02AAC00815184 /* FeedbackAssistant */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = "Feedback Assistant";
+			path = FeedbackAssistant;
 			sourceTree = "<group>";
 		};
-		164D4FE72EF02AAD00815184 /* Feedback AssistantTests */ = {
+		164D4FE72EF02AAD00815184 /* FeedbackAssistantTests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = "Feedback AssistantTests";
+			path = FeedbackAssistantTests;
 			sourceTree = "<group>";
 		};
 		164D4FF12EF02AAD00815184 /* Feedback AssistantUITests */ = {
@@ -75,8 +75,8 @@
 		164D4FCE2EF02AAC00815184 = {
 			isa = PBXGroup;
 			children = (
-				164D4FD92EF02AAC00815184 /* Feedback Assistant */,
-				164D4FE72EF02AAD00815184 /* Feedback AssistantTests */,
+				164D4FD92EF02AAC00815184 /* FeedbackAssistant */,
+				164D4FE72EF02AAD00815184 /* FeedbackAssistantTests */,
 				164D4FF12EF02AAD00815184 /* Feedback AssistantUITests */,
 				164D4FD82EF02AAC00815184 /* Products */,
 			);
@@ -85,9 +85,9 @@
 		164D4FD82EF02AAC00815184 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				164D4FD72EF02AAC00815184 /* Feedback Assistant.app */,
-				164D4FE42EF02AAD00815184 /* Feedback AssistantTests.xctest */,
-				164D4FEE2EF02AAD00815184 /* Feedback AssistantUITests.xctest */,
+				164D4FD72EF02AAC00815184 /* FeedbackAssistant.app */,
+				164D4FE42EF02AAD00815184 /* FeedbackAssistantTests.xctest */,
+				164D4FEE2EF02AAD00815184 /* FeedbackAssistantUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -95,9 +95,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		164D4FD62EF02AAC00815184 /* Feedback Assistant */ = {
+		164D4FD62EF02AAC00815184 /* FeedbackAssistant */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 164D4FF82EF02AAD00815184 /* Build configuration list for PBXNativeTarget "Feedback Assistant" */;
+			buildConfigurationList = 164D4FF82EF02AAD00815184 /* Build configuration list for PBXNativeTarget "FeedbackAssistant" */;
 			buildPhases = (
 				164D4FD32EF02AAC00815184 /* Sources */,
 				164D4FD42EF02AAC00815184 /* Frameworks */,
@@ -109,18 +109,18 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				164D4FD92EF02AAC00815184 /* Feedback Assistant */,
+				164D4FD92EF02AAC00815184 /* FeedbackAssistant */,
 			);
-			name = "Feedback Assistant";
+			name = FeedbackAssistant;
 			packageProductDependencies = (
 			);
 			productName = "Feedback Assistant";
-			productReference = 164D4FD72EF02AAC00815184 /* Feedback Assistant.app */;
+			productReference = 164D4FD72EF02AAC00815184 /* FeedbackAssistant.app */;
 			productType = "com.apple.product-type.application";
 		};
-		164D4FE32EF02AAD00815184 /* Feedback AssistantTests */ = {
+		164D4FE32EF02AAD00815184 /* FeedbackAssistantTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 164D4FFB2EF02AAD00815184 /* Build configuration list for PBXNativeTarget "Feedback AssistantTests" */;
+			buildConfigurationList = 164D4FFB2EF02AAD00815184 /* Build configuration list for PBXNativeTarget "FeedbackAssistantTests" */;
 			buildPhases = (
 				164D4FE02EF02AAD00815184 /* Sources */,
 				164D4FE12EF02AAD00815184 /* Frameworks */,
@@ -132,18 +132,18 @@
 				164D4FE62EF02AAD00815184 /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
-				164D4FE72EF02AAD00815184 /* Feedback AssistantTests */,
+				164D4FE72EF02AAD00815184 /* FeedbackAssistantTests */,
 			);
-			name = "Feedback AssistantTests";
+			name = FeedbackAssistantTests;
 			packageProductDependencies = (
 			);
 			productName = "Feedback AssistantTests";
-			productReference = 164D4FE42EF02AAD00815184 /* Feedback AssistantTests.xctest */;
+			productReference = 164D4FE42EF02AAD00815184 /* FeedbackAssistantTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		164D4FED2EF02AAD00815184 /* Feedback AssistantUITests */ = {
+		164D4FED2EF02AAD00815184 /* FeedbackAssistantUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 164D4FFE2EF02AAD00815184 /* Build configuration list for PBXNativeTarget "Feedback AssistantUITests" */;
+			buildConfigurationList = 164D4FFE2EF02AAD00815184 /* Build configuration list for PBXNativeTarget "FeedbackAssistantUITests" */;
 			buildPhases = (
 				164D4FEA2EF02AAD00815184 /* Sources */,
 				164D4FEB2EF02AAD00815184 /* Frameworks */,
@@ -157,11 +157,11 @@
 			fileSystemSynchronizedGroups = (
 				164D4FF12EF02AAD00815184 /* Feedback AssistantUITests */,
 			);
-			name = "Feedback AssistantUITests";
+			name = FeedbackAssistantUITests;
 			packageProductDependencies = (
 			);
 			productName = "Feedback AssistantUITests";
-			productReference = 164D4FEE2EF02AAD00815184 /* Feedback AssistantUITests.xctest */;
+			productReference = 164D4FEE2EF02AAD00815184 /* FeedbackAssistantUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -187,7 +187,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 164D4FD22EF02AAC00815184 /* Build configuration list for PBXProject "Feedback Assistant" */;
+			buildConfigurationList = 164D4FD22EF02AAC00815184 /* Build configuration list for PBXProject "FeedbackAssistant" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -202,9 +202,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				164D4FD62EF02AAC00815184 /* Feedback Assistant */,
-				164D4FE32EF02AAD00815184 /* Feedback AssistantTests */,
-				164D4FED2EF02AAD00815184 /* Feedback AssistantUITests */,
+				164D4FD62EF02AAC00815184 /* FeedbackAssistant */,
+				164D4FE32EF02AAD00815184 /* FeedbackAssistantTests */,
+				164D4FED2EF02AAD00815184 /* FeedbackAssistantUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -282,12 +282,12 @@
 /* Begin PBXTargetDependency section */
 		164D4FE62EF02AAD00815184 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 164D4FD62EF02AAC00815184 /* Feedback Assistant */;
+			target = 164D4FD62EF02AAC00815184 /* FeedbackAssistant */;
 			targetProxy = 164D4FE52EF02AAD00815184 /* PBXContainerItemProxy */;
 		};
 		164D4FF02EF02AAD00815184 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 164D4FD62EF02AAC00815184 /* Feedback Assistant */;
+			target = 164D4FD62EF02AAC00815184 /* FeedbackAssistant */;
 			targetProxy = 164D4FEF2EF02AAD00815184 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -414,7 +414,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = "Feedback Assistant/Configuration/Feedback Assistant.entitlements";
+				CODE_SIGN_ENTITLEMENTS = FeedbackAssistant/Configuration/FeedbackAssistant.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = UQP96YXSBQ;
@@ -459,7 +459,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = "Feedback Assistant/Configuration/Feedback Assistant.entitlements";
+				CODE_SIGN_ENTITLEMENTS = FeedbackAssistant/Configuration/FeedbackAssistant.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = UQP96YXSBQ;
@@ -519,7 +519,7 @@
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2,7";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Feedback Assistant.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Feedback Assistant";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FeedbackAssistant.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/FeedbackAssistant";
 				XROS_DEPLOYMENT_TARGET = 26.2;
 			};
 			name = Debug;
@@ -544,7 +544,7 @@
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2,7";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Feedback Assistant.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Feedback Assistant";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FeedbackAssistant.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/FeedbackAssistant";
 				XROS_DEPLOYMENT_TARGET = 26.2;
 			};
 			name = Release;
@@ -600,7 +600,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		164D4FD22EF02AAC00815184 /* Build configuration list for PBXProject "Feedback Assistant" */ = {
+		164D4FD22EF02AAC00815184 /* Build configuration list for PBXProject "FeedbackAssistant" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				164D4FF62EF02AAD00815184 /* Debug */,
@@ -609,7 +609,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		164D4FF82EF02AAD00815184 /* Build configuration list for PBXNativeTarget "Feedback Assistant" */ = {
+		164D4FF82EF02AAD00815184 /* Build configuration list for PBXNativeTarget "FeedbackAssistant" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				164D4FF92EF02AAD00815184 /* Debug */,
@@ -618,7 +618,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		164D4FFB2EF02AAD00815184 /* Build configuration list for PBXNativeTarget "Feedback AssistantTests" */ = {
+		164D4FFB2EF02AAD00815184 /* Build configuration list for PBXNativeTarget "FeedbackAssistantTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				164D4FFC2EF02AAD00815184 /* Debug */,
@@ -627,7 +627,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		164D4FFE2EF02AAD00815184 /* Build configuration list for PBXNativeTarget "Feedback AssistantUITests" */ = {
+		164D4FFE2EF02AAD00815184 /* Build configuration list for PBXNativeTarget "FeedbackAssistantUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				164D4FFF2EF02AAD00815184 /* Debug */,

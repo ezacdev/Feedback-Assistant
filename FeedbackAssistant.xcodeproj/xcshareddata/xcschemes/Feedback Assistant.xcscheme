@@ -16,9 +16,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "164D4FD62EF02AAC00815184"
-               BuildableName = "Feedback Assistant.app"
-               BlueprintName = "Feedback Assistant"
-               ReferencedContainer = "container:Feedback Assistant.xcodeproj">
+               BuildableName = "FeedbackAssistant.app"
+               BlueprintName = "FeedbackAssistant"
+               ReferencedContainer = "container:FeedbackAssistant.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -36,9 +36,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "164D4FE32EF02AAD00815184"
-               BuildableName = "Feedback AssistantTests.xctest"
-               BlueprintName = "Feedback AssistantTests"
-               ReferencedContainer = "container:Feedback Assistant.xcodeproj">
+               BuildableName = "FeedbackAssistantTests.xctest"
+               BlueprintName = "FeedbackAssistantTests"
+               ReferencedContainer = "container:FeedbackAssistant.xcodeproj">
             </BuildableReference>
          </TestableReference>
          <TestableReference
@@ -47,9 +47,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "164D4FED2EF02AAD00815184"
-               BuildableName = "Feedback AssistantUITests.xctest"
-               BlueprintName = "Feedback AssistantUITests"
-               ReferencedContainer = "container:Feedback Assistant.xcodeproj">
+               BuildableName = "FeedbackAssistantUITests.xctest"
+               BlueprintName = "FeedbackAssistantUITests"
+               ReferencedContainer = "container:FeedbackAssistant.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -69,9 +69,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "164D4FD62EF02AAC00815184"
-            BuildableName = "Feedback Assistant.app"
-            BlueprintName = "Feedback Assistant"
-            ReferencedContainer = "container:Feedback Assistant.xcodeproj">
+            BuildableName = "FeedbackAssistant.app"
+            BlueprintName = "FeedbackAssistant"
+            ReferencedContainer = "container:FeedbackAssistant.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -86,9 +86,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "164D4FD62EF02AAC00815184"
-            BuildableName = "Feedback Assistant.app"
-            BlueprintName = "Feedback Assistant"
-            ReferencedContainer = "container:Feedback Assistant.xcodeproj">
+            BuildableName = "FeedbackAssistant.app"
+            BlueprintName = "FeedbackAssistant"
+            ReferencedContainer = "container:FeedbackAssistant.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
