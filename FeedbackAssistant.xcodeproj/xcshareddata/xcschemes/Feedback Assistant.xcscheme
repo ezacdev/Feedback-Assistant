@@ -27,15 +27,20 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      shouldUseLaunchSchemeArgsEnv = "YES"
-      shouldAutocreateTestPlan = "YES">
+      shouldUseLaunchSchemeArgsEnv = "YES">
+      <TestPlans>
+         <TestPlanReference
+            reference = "container:../FeedbackAssistant.xctestplan"
+            default = "YES">
+         </TestPlanReference>
+      </TestPlans>
       <Testables>
          <TestableReference
             skipped = "NO"
             parallelizable = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "164D4FE32EF02AAD00815184"
+               BlueprintIdentifier = "1648A16B2F0C3425001CE56E"
                BuildableName = "FeedbackAssistantTests.xctest"
                BlueprintName = "FeedbackAssistantTests"
                ReferencedContainer = "container:FeedbackAssistant.xcodeproj">

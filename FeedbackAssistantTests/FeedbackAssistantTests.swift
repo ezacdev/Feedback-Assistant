@@ -1,9 +1,13 @@
-import Testing
+import CoreData
+import XCTest
+@testable import FeedbackAssistant
 
-struct FeedbackAssistantTests {
+class BaseTestCase: XCTestCase {
+    var dataController: DataController!
+    var managedObjectContext: NSManagedObjectContext!
 
-    @Test func example() async throws {
-        // Write your test here and use APIs like `#expect(...)` to check expected conditions.
+    override func setUpWithError() throws {
+        dataController = DataController(inMemory: true)
+        managedObjectContext = dataController.container.viewContext
     }
-
 }
