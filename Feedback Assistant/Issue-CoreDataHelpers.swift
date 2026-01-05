@@ -38,10 +38,18 @@ extension Issue {
     }
 
     var issueTagsList: String {
-        guard let tags else { return "No tags" }
+        guard let tags else {
+            return NSLocalizedString(
+                "No tags",
+                comment: "Shown when there are no tags"
+            )
+        }
 
         if tags.count == 0 {
-            return "No tags"
+            return NSLocalizedString(
+                "No tags",
+                comment: "Shown when there are no tags"
+            )
         } else {
             return issueTags.map(\.tagName).formatted()
         }
