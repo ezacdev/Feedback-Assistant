@@ -10,7 +10,6 @@ enum Status {
     case all, open, closed
 }
 
-
 /// An environment singleton responsible for managing our Core Data stack, including handling saving,
 /// counting fetch requests, tracking awards, and dealing with sample data.
 
@@ -20,7 +19,6 @@ class DataController: ObservableObject {
 
     /// The lone CloudKit container used to store all our data.
     let container: NSPersistentContainer
-    
     @Published var selectedFilter: Filter? = Filter.all
     @Published var selectedIssue: Issue?
     @Published var filterText = ""
@@ -36,6 +34,24 @@ class DataController: ObservableObject {
         let dataController = DataController(inMemory: true)
         dataController.createSampleData()
         return dataController
+    }()
+
+    static let model: NSManagedObjectModel = {
+        guard
+            let url = Bundle.main.url(
+                forResource: "Main",
+                withExtension: "momd"
+            )
+        else {
+            fatalError("Failed to locate model file.")
+        }
+
+        guard let managedObjectModel = NSManagedObjectModel(contentsOf: url)
+        else {
+            fatalError("Failed to load model file.")
+        }
+
+        return managedObjectModel
     }()
 
     var suggestedFilterTokens: [Tag] {
@@ -63,7 +79,10 @@ class DataController: ObservableObject {
     /// Defaults to permanent storage.
     /// - Parameter inMemory: Whether to store this data in temporary memory or not.
     init(inMemory: Bool = false) {
-        container = NSPersistentContainer(name: "Main")
+        container = NSPersistentContainer(
+            name: "Main",
+            managedObjectModel: Self.model
+        )
 
         // for testing and previewing purposes, we create a
         // temporary, in-memory database by writing to /dev/null
@@ -237,7 +256,7 @@ class DataController: ObservableObject {
             let combinedPredicate = NSCompoundPredicate(
                 orPredicateWithSubpredicates: [
                     titlePredicate,
-                    contentPredicate
+                    contentPredicate,
                 ]
             )
             predicates.append(combinedPredicate)

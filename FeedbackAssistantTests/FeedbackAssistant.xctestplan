@@ -18,7 +18,7 @@
   },
   "testTargets" : [
     {
-      "parallelizable" : true,
+      "parallelizable" : false,
       "target" : {
         "containerPath" : "container:FeedbackAssistant.xcodeproj",
         "identifier" : "1648A16B2F0C3425001CE56E",
