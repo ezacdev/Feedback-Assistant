@@ -1,0 +1,25 @@
+{
+  "configurations" : [
+    {
+      "id" : "4E483CAB-CEDE-40DA-B651-E6CEAAA13716",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "performanceAntipatternCheckerEnabled" : true
+  },
+  "testTargets" : [
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:FeedbackAssistant.xcodeproj",
+        "identifier" : "1648A18D2F1149A2001CE56E",
+        "name" : "FeedbackAssistantUITests"
+      }
+    }
+  ],
+  "version" : 1
+}

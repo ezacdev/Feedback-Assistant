@@ -51,7 +51,18 @@
             parallelizable = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "164D4FED2EF02AAD00815184"
+               BlueprintIdentifier = "1648A18D2F1149A2001CE56E"
+               BuildableName = "FeedbackAssistantUITests.xctest"
+               BlueprintName = "FeedbackAssistantUITests"
+               ReferencedContainer = "container:FeedbackAssistant.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO"
+            parallelizable = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "1648A18D2F1149A2001CE56E"
                BuildableName = "FeedbackAssistantUITests.xctest"
                BlueprintName = "FeedbackAssistantUITests"
                ReferencedContainer = "container:FeedbackAssistant.xcodeproj">
