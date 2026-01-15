@@ -2,34 +2,30 @@ import CoreData
 import SwiftUI
 
 struct ContentView: View {
-
-    @EnvironmentObject var dataController: DataController
-
-    var body: some View {
-        List(selection: $dataController.selectedIssue) {
-            ForEach(dataController.issuesForSelectedFilter()) { issue in
-                IssueRow(issue: issue)
-            }
-            .onDelete(perform: delete)
-        }
-        .navigationTitle("Issues")
-        .searchable(text: $dataController.filterText, prompt: "Filter issues")
-        .toolbar {
-            ContentViewToolbar()
-        }
+    
+    @StateObject var viewModel: ViewModel
+    
+    init(dataController: DataController) {
+        let viewModel = ViewModel(dataController: dataController)
+        _viewModel = StateObject(wrappedValue: viewModel)
     }
 
-    func delete(_ offsets: IndexSet) {
-        let issues = dataController.issuesForSelectedFilter()
-
-        for offset in offsets {
-            let item = issues[offset]
-            dataController.delete(item)
+    var body: some View {
+        List(selection: $viewModel.selectedIssue) {
+            ForEach(viewModel.dataController.issuesForSelectedFilter()) {
+                issue in
+                IssueRow(issue: issue)
+            }
+            .onDelete(perform: viewModel.delete)
+        }
+        .navigationTitle("Issues")
+        .searchable(text: $viewModel.filterText, prompt: "Filter issues")
+        .toolbar {
+            ContentViewToolbar()
         }
     }
 }
 
 #Preview {
-    ContentView()
-        .environmentObject(DataController.preview)
+    ContentView(dataController: .preview)
 }

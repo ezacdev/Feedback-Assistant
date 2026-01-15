@@ -33,10 +33,6 @@ extension Issue {
         }
     }
 
-    var issueFormattedCreationDate: String {
-        issueCreationDate.formatted(date: .numeric, time: .omitted)
-    }
-
     var issueTagsList: String {
         guard let tags else {
             return NSLocalizedString(
