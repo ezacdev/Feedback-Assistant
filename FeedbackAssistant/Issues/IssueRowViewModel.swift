@@ -22,16 +22,20 @@ extension IssueRow {
         var creationDate: String {
             issue.issueCreationDate.formatted(date: .numeric, time: .omitted)
         }
-        
+
         var accessibilityCreationDate: String {
-            issue.issueCreationDate.formatted(date: .abbreviated, time: .omitted)
+            issue.issueCreationDate.formatted(
+                date: .abbreviated,
+                time: .omitted
+            )
         }
 
         init(issue: Issue) {
             self.issue = issue
         }
-        
-        subscript<Value>(dynamicMember keyPath: KeyPath<Issue, Value>) -> Value {
+
+        subscript<Value>(dynamicMember keyPath: KeyPath<Issue, Value>) -> Value
+        {
             issue[keyPath: keyPath]
         }
     }
