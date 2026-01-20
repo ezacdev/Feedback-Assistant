@@ -5,20 +5,17 @@ import SwiftUI
 @main
 struct FeedbackAssistantApp: App {
 
-    @StateObject var dataController = DataController()
+    @StateObject private var dataController: DataController
     @Environment(\.scenePhase) var scenePhase
 
-    private let notificationDelegate: NotificationDelegate
+    private let notificationDelegate = NotificationDelegate()
 
     init() {
         let dc = DataController()
         _dataController = StateObject(wrappedValue: dc)
+        notificationDelegate.dataController = dc
 
-        let nd = NotificationDelegate()
-        nd.dataController = dc
-        notificationDelegate = nd
-
-        UNUserNotificationCenter.current().delegate = nd
+        UNUserNotificationCenter.current().delegate = notificationDelegate
     }
 
     var body: some Scene {
@@ -44,12 +41,6 @@ struct FeedbackAssistantApp: App {
                 CSSearchableItemActionType,
                 perform: loadSpotlightItem
             )
-            //            .onAppear {
-            //                notificationDelegate.dataController = dataController
-            //                UNUserNotificationCenter.current().delegate =
-            //                    notificationDelegate
-            //            }
-
         }
     }
 
