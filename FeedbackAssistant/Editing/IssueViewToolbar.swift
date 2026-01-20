@@ -87,7 +87,7 @@ struct IssueViewToolbar: View {
 
             let event2 = CHHapticEvent(
                 eventType: .hapticContinuous,
-                parameters: [sharpness, intensity],
+                parameters: [intensity, sharpness],
                 relativeTime: 0.125,
                 duration: 1
             )

@@ -8,6 +8,19 @@ struct FeedbackAssistantApp: App {
     @StateObject var dataController = DataController()
     @Environment(\.scenePhase) var scenePhase
 
+    private let notificationDelegate: NotificationDelegate
+
+    init() {
+        let dc = DataController()
+        _dataController = StateObject(wrappedValue: dc)
+
+        let nd = NotificationDelegate()
+        nd.dataController = dc
+        notificationDelegate = nd
+
+        UNUserNotificationCenter.current().delegate = nd
+    }
+
     var body: some Scene {
         WindowGroup {
             NavigationSplitView {
@@ -31,6 +44,12 @@ struct FeedbackAssistantApp: App {
                 CSSearchableItemActionType,
                 perform: loadSpotlightItem
             )
+            //            .onAppear {
+            //                notificationDelegate.dataController = dataController
+            //                UNUserNotificationCenter.current().delegate =
+            //                    notificationDelegate
+            //            }
+
         }
     }
 

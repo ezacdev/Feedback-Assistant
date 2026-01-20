@@ -25,6 +25,11 @@ extension Issue {
         return result.sorted()
     }
 
+    var issueReminderTime: Date {
+        get { reminderTime ?? .now }
+        set { reminderTime = newValue }
+    }
+
     var issueStatus: String {
         if completed {
             return NSLocalizedString("Closed", comment: "Closed issue")

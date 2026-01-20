@@ -3,7 +3,10 @@ import SwiftUI
 
 struct IssueView: View {
     @ObservedObject var issue: Issue
+    @Environment(\.openURL) var openURL
     @EnvironmentObject var dataController: DataController
+
+    @State private var showingNotificationsError = false
 
     var body: some View {
         Form {
@@ -47,6 +50,20 @@ struct IssueView: View {
                 }
             }
 
+            Section("Reminders") {
+                Toggle(
+                    "Show reminders",
+                    isOn: $issue.reminderEnabled.animation()
+                )
+
+                if issue.reminderEnabled {
+                    DatePicker(
+                        "Reminder time",
+                        selection: $issue.issueReminderTime,
+                        displayedComponents: .hourAndMinute
+                    )
+                }
+            }
         }
         .disabled(issue.isDeleted)
         .onReceive(issue.objectWillChange) { _ in
@@ -55,6 +72,47 @@ struct IssueView: View {
         .onSubmit(dataController.save)
         .toolbar {
             IssueViewToolbar(issue: issue)
+        }
+        .alert("Oops!", isPresented: $showingNotificationsError) {
+            Button("Check Settings", action: showAppSettings)
+            Button("Cancel", role: .cancel) {}
+        } message: {
+            Text(
+                "There was a problem setting your notification. Please check you have notifications enabled."
+            )
+        }
+        .onChange(of: issue.reminderEnabled) {
+            updateReminder()
+        }
+        .onChange(of: issue.reminderTime) {
+            updateReminder()
+        }
+    }
+
+    func showAppSettings() {
+        guard
+            let settingsURL = URL(
+                string: UIApplication.openNotificationSettingsURLString
+            )
+        else {
+            return
+        }
+
+        openURL(settingsURL)
+    }
+
+    func updateReminder() {
+        dataController.removeReminders(for: issue)
+
+        Task { @MainActor in
+            if issue.reminderEnabled {
+                let success = await dataController.addReminder(for: issue)
+
+                if success == false {
+                    issue.reminderEnabled = false
+                    showingNotificationsError = true
+                }
+            }
         }
     }
 }
