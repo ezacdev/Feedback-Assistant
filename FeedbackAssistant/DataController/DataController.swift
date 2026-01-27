@@ -1,5 +1,6 @@
 import Combine
 import CoreData
+import StoreKit
 import SwiftUI
 
 enum SortType: String {
@@ -13,13 +14,16 @@ enum Status {
 
 /// An environment singleton responsible for managing our Core Data stack, including handling saving,
 /// counting fetch requests, tracking awards, and dealing with sample data.
-
 class DataController: ObservableObject {
 
     private var saveTask: Task<Void, Error>?
 
+    private var storeTask: Task<Void, Never>?
+
     /// The lone CloudKit container used to store all our data.
     let container: NSPersistentContainer
+
+    let defaults: UserDefaults
 
     var spotlightDelegate: NSCoreDataCoreSpotlightDelegate?
 
@@ -27,12 +31,12 @@ class DataController: ObservableObject {
     @Published var selectedIssue: Issue?
     @Published var filterText = ""
     @Published var filterTokens = [Tag]()
-
     @Published var filterEnabled = false
     @Published var filterPriority = -1
     @Published var filterStatus = Status.all
     @Published var sortType = SortType.dateCreated
     @Published var sortNewestFirst = true
+    @Published var products = [Product]()
 
     static var preview: DataController = {
         let dataController = DataController(inMemory: true)
@@ -82,11 +86,18 @@ class DataController: ObservableObject {
     ///
     /// Defaults to permanent storage.
     /// - Parameter inMemory: Whether to store this data in temporary memory or not.
-    init(inMemory: Bool = false) {
+    init(inMemory: Bool = false, defaults: UserDefaults = .standard) {
+
+        self.defaults = defaults
+
         container = NSPersistentContainer(
             name: "Main",
             managedObjectModel: Self.model
         )
+
+        storeTask = Task {
+            await monitorTransactions()
+        }
 
         // for testing and previewing purposes, we create a
         // temporary, in-memory database by writing to /dev/null
@@ -346,11 +357,24 @@ class DataController: ObservableObject {
         selectedIssue = issue
     }
 
-    func newTag() {
+    func newTag() -> Bool {
+        var shouldCreate = fullVersionUnlocked
+
+        if shouldCreate == false {
+            // check how many tags we currently have
+            shouldCreate = count(for: Tag.fetchRequest()) < 3
+        }
+
+        guard shouldCreate else {
+            return false
+        }
+
         let tag = Tag(context: container.viewContext)
         tag.id = UUID()
         tag.name = NSLocalizedString("New tag", comment: "Create a new tag")
         save()
+
+        return true
     }
 
     func count<T>(for fetchRequest: NSFetchRequest<T>) -> Int {

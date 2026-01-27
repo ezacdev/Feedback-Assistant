@@ -8,7 +8,6 @@ final class NotificationDelegate: NSObject, UNUserNotificationCenterDelegate {
         _ center: UNUserNotificationCenter,
         didReceive response: UNNotificationResponse
     ) async {
-        // 1) достаём issueID из уведомления
         guard
             let id = response.notification.request.content.userInfo["issueID"]
                 as? String
@@ -16,7 +15,6 @@ final class NotificationDelegate: NSObject, UNUserNotificationCenterDelegate {
             return
         }
 
-        // 2) обновляем состояние приложения на главном потоке
         await MainActor.run {
             dataController?.loadIssueFromExternalTrigger(id)
         }
