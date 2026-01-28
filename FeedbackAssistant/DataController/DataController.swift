@@ -402,6 +402,9 @@ class DataController: ObservableObject {
             let awardCount = count(for: fetchRequest)
             return awardCount >= award.value
 
+        case "unlock":
+            return fullVersionUnlocked
+
         default:
             // an unknown award criterion; this should never be allowed
             // fatalError("Unknown award criterion: \(award.criterion)")

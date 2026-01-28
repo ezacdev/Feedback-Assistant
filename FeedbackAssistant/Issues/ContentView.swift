@@ -1,10 +1,13 @@
 import CoreData
+import StoreKit
 import SwiftUI
 
 struct ContentView: View {
-    
+
+    @Environment(\.requestReview) var requestReview
+
     @StateObject var viewModel: ViewModel
-    
+
     init(dataController: DataController) {
         let viewModel = ViewModel(dataController: dataController)
         _viewModel = StateObject(wrappedValue: viewModel)
@@ -22,6 +25,13 @@ struct ContentView: View {
         .searchable(text: $viewModel.filterText, prompt: "Filter issues")
         .toolbar {
             ContentViewToolbar()
+        }
+        .onAppear(perform: askForReview)
+    }
+
+    func askForReview() {
+        if viewModel.shouldRequestReview {
+            requestReview()
         }
     }
 }
