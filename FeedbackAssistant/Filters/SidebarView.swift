@@ -23,6 +23,7 @@ struct SidebarView: View {
                 ForEach(viewModel.tagFilters) { filter in
                     UserFilterRow(
                         filter: filter,
+                        tag: filter.tag!,
                         rename: viewModel.rename,
                         delete: viewModel.delete
                     )

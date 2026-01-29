@@ -8,6 +8,8 @@ struct FeedbackAssistantApp: App {
     @StateObject private var dataController: DataController
     @Environment(\.scenePhase) var scenePhase
 
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+
     private let notificationDelegate = NotificationDelegate()
 
     init() {

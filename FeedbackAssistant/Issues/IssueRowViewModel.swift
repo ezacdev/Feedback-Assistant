@@ -1,11 +1,12 @@
 import Combine
 import Foundation
+import SwiftUI
 
 extension IssueRow {
     @dynamicMemberLookup
     class ViewModel: ObservableObject {
 
-        let issue: Issue
+        @ObservedObject var issue: Issue
 
         var iconOpacity: Double {
             issue.priority == 2 ? 1 : 0
