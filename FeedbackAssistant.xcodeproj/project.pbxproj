@@ -78,6 +78,7 @@
 		16EEAB262F2CDC7200CDB8E9 /* Exceptions for "FeedbackAssistant" folder in "FeedbackAssistantWidgetExtension" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
+				Configuration/Localizable.xcstrings,
 				Configuration/Main.xcdatamodeld,
 				"DataController/DataController-StoreKit.swift",
 				DataController/DataController.swift,
@@ -86,6 +87,13 @@
 				Filters/Filter.swift,
 			);
 			target = 16EEAB0E2F2CD95C00CDB8E9 /* FeedbackAssistantWidgetExtension */;
+		};
+		16EEAB342F30CFCB00CDB8E9 /* Exceptions for "FeedbackAssistantWidget" folder in "FeedbackAssistant" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Widgets/ComplexFeedbackAssistantWidget.swift,
+			);
+			target = 164D4FD62EF02AAC00815184 /* FeedbackAssistant */;
 		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
@@ -114,6 +122,7 @@
 		16EEAB152F2CD95C00CDB8E9 /* FeedbackAssistantWidget */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
+				16EEAB342F30CFCB00CDB8E9 /* Exceptions for "FeedbackAssistantWidget" folder in "FeedbackAssistant" target */,
 				16EEAB232F2CD95D00CDB8E9 /* Exceptions for "FeedbackAssistantWidget" folder in "FeedbackAssistantWidgetExtension" target */,
 			);
 			path = FeedbackAssistantWidget;

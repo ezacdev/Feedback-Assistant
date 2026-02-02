@@ -5,7 +5,7 @@ extension ContentView {
     @dynamicMemberLookup
     class ViewModel: ObservableObject {
         var dataController: DataController
-        
+
         var shouldRequestReview: Bool {
             dataController.count(for: Tag.fetchRequest()) >= 5
         }
@@ -20,6 +20,16 @@ extension ContentView {
             for offset in offsets {
                 let item = issues[offset]
                 dataController.delete(item)
+            }
+        }
+
+        func openURL(_ url: URL) {
+            if url.absoluteString.contains("newIssue") {
+                dataController.newIssue()
+            } else if let issue = dataController.issue(with: url.absoluteString)
+            {
+                dataController.selectedIssue = issue
+                dataController.selectedFilter = .all
             }
         }
 

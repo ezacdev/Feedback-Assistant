@@ -1,8 +1,8 @@
 import SwiftUI
 import WidgetKit
 
-struct Provider: TimelineProvider {
-    
+struct SimpleProvider: TimelineProvider {
+
     private let dataController = DataController()
 
     func placeholder(in context: Context) -> SimpleEntry {
@@ -37,8 +37,8 @@ struct SimpleEntry: TimelineEntry {
     let issues: [Issue]
 }
 
-struct FeedbackAssistantWidgetEntryView: View {
-    var entry: Provider.Entry
+struct SimpleFeedbackAssistantWidgetEntryView: View {
+    var entry: SimpleProvider.Entry
 
     var body: some View {
         VStack {
@@ -54,27 +54,28 @@ struct FeedbackAssistantWidgetEntryView: View {
     }
 }
 
-struct FeedbackAssistantWidget: Widget {
-    let kind: String = "FeedbackAssistantWidget"
+struct SimpleFeedbackAssistantWidget: Widget {
+    let kind: String = "SimpleFeedbackAssistantWidget"
 
     var body: some WidgetConfiguration {
-        StaticConfiguration(kind: kind, provider: Provider()) { entry in
+        StaticConfiguration(kind: kind, provider: SimpleProvider()) { entry in
             if #available(iOS 17.0, *) {
-                FeedbackAssistantWidgetEntryView(entry: entry)
+                SimpleFeedbackAssistantWidgetEntryView(entry: entry)
                     .containerBackground(.fill.tertiary, for: .widget)
             } else {
-                FeedbackAssistantWidgetEntryView(entry: entry)
+                SimpleFeedbackAssistantWidgetEntryView(entry: entry)
                     .padding()
                     .background()
             }
         }
-        .configurationDisplayName("My Widget")
-        .description("This is an example widget.")
+        .configurationDisplayName("Up next…")
+        .description("Your #1 top-priority issue.")
+        .supportedFamilies([.systemSmall])
     }
 }
 
 #Preview(as: .systemSmall) {
-    FeedbackAssistantWidget()
+    SimpleFeedbackAssistantWidget()
 } timeline: {
     SimpleEntry(date: .now, issues: [.example])
     SimpleEntry(date: .now, issues: [.example])
