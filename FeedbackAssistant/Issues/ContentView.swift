@@ -38,9 +38,11 @@ struct ContentView: View {
     }
 
     func askForReview() {
+        #if !DEBUG
         if viewModel.shouldRequestReview {
             requestReview()
         }
+        #endif
     }
 
     func resumeActivity(_ userActivity: NSUserActivity) {
