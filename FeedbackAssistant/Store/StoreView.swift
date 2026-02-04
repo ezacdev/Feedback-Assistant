@@ -16,75 +16,16 @@ struct StoreView: View {
 
         NavigationStack {
             VStack(spacing: 20) {
-                VStack {
-                    Image(decorative: "unlock")
-                        .resizable()
-                        .scaledToFit()
-
-                    Text("Upgrade Today!")
-                        .font(.title.bold())
-                        .fontDesign(.rounded)
-                        .foregroundStyle(.white)
-
-                    Text("Get the most out of the app")
-                        .font(.headline)
-                        .foregroundStyle(.white)
-                }
-                .frame(maxWidth: .infinity)
-                .padding(20)
-                .background(.blue.gradient)
-
+                headerView
                 ScrollView {
                     VStack {
                         switch loadState {
                         case .loading:
-                            Text("Fetching offers…")
-                                .font(.title2.bold())
-                                .padding(.top, 50)
-                            ProgressView()
-                                .controlSize(.large)
-
+                            loadingView
                         case .loaded:
-                            ForEach(dataController.products) { product in
-                                Button {
-                                    purchase(product)
-                                } label: {
-                                    HStack {
-                                        VStack(alignment: .leading) {
-                                            Text(product.displayName)
-                                                .font(.title2.bold())
-                                            Text(product.description)
-                                        }
-                                        .padding(20)
-
-                                        Spacer()
-
-                                        Text(product.displayPrice)
-                                            .font(.title)
-                                            .fontDesign(.rounded)
-                                    }
-                                    .padding(.horizontal, 20)
-                                    .padding(.vertical, 10)
-                                    .frame(maxWidth: .infinity)
-                                    .background(
-                                        .gray.opacity(0.2),
-                                        in: .rect(cornerRadius: 20)
-                                    )
-                                    .contentShape(.rect)
-                                }
-                                .buttonStyle(.plain)
-                            }
-
+                            loadedView
                         case .error:
-                            Text("Sorry, there was an error loading our store.")
-                                .padding(.top, 50)
-
-                            Button("Try Again") {
-                                Task {
-                                    await load()
-                                }
-                            }
-                            .buttonStyle(.borderedProminent)
+                            errorView
                         }
                     }
                 }
@@ -94,7 +35,7 @@ struct StoreView: View {
                 Button("Cancel") {
                     dismiss()
                 }
-                .padding(.top, 20)
+                .padding(20)
             }
         }
         .onChange(of: dataController.fullVersionUnlocked) {
@@ -116,7 +57,83 @@ struct StoreView: View {
                 """
             )
         }
+    }
 
+    private var headerView: some View {
+        VStack {
+            Image(decorative: "unlock")
+                .resizable()
+                .scaledToFit()
+
+            Text("Upgrade Today!")
+                .font(.title.bold())
+                .fontDesign(.rounded)
+                .foregroundStyle(.white)
+
+            Text("Get the most out of the app")
+                .font(.headline)
+                .foregroundStyle(.white)
+        }
+        .frame(maxWidth: .infinity)
+        .padding(20)
+        .background(.blue.gradient)
+
+    }
+
+    private var loadingView: some View {
+        VStack {
+            Text("Fetching offers…")
+                .font(.title2.bold())
+                .padding(.top, 50)
+            ProgressView()
+                .controlSize(.large)
+        }
+    }
+
+    private var loadedView: some View {
+        ForEach(dataController.products) { product in
+            Button {
+                purchase(product)
+            } label: {
+                HStack {
+                    VStack(alignment: .leading) {
+                        Text(product.displayName)
+                            .font(.title2.bold())
+                        Text(product.description)
+                    }
+                    .padding(20)
+
+                    Spacer()
+
+                    Text(product.displayPrice)
+                        .font(.title)
+                        .fontDesign(.rounded)
+                }
+                .padding(.horizontal, 20)
+                .padding(.vertical, 10)
+                .frame(maxWidth: .infinity)
+                .background(
+                    .gray.opacity(0.2),
+                    in: .rect(cornerRadius: 20)
+                )
+                .contentShape(.rect)
+            }
+            .buttonStyle(.plain)
+        }
+    }
+
+    private var errorView: some View {
+        VStack {
+            Text("Sorry, there was an error loading our store.")
+                .padding(.top, 50)
+
+            Button("Try Again") {
+                Task {
+                    await load()
+                }
+            }
+            .buttonStyle(.borderedProminent)
+        }
     }
 
     func checkForPurchase() {
