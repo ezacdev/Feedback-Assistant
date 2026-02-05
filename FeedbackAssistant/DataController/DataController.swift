@@ -169,7 +169,9 @@ class DataController: ObservableObject {
                     self?.deleteAll()
                 }
 
-            //                UIView.setAnimationsEnabled(false)
+                #if os(iOS)
+                    //                    UIView.setAnimationsEnabled(false)
+                #endif
             #endif
         }
     }

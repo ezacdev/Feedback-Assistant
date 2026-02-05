@@ -31,6 +31,7 @@ struct SidebarView: View {
                 .onDelete(perform: viewModel.delete)
             }
         }
+        .macFrame(minWidth: 220)
         .navigationTitle("Filters")
         .alert(
             LocalizedStringKey("Rename tag"),

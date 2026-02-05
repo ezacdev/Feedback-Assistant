@@ -8,7 +8,9 @@ struct FeedbackAssistantApp: App {
     @StateObject private var dataController: DataController
     @Environment(\.scenePhase) var scenePhase
 
-    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+    #if os(iOS)
+        @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+    #endif
 
     private let notificationDelegate = NotificationDelegate()
 
@@ -17,7 +19,9 @@ struct FeedbackAssistantApp: App {
         _dataController = StateObject(wrappedValue: dc)
         notificationDelegate.dataController = dc
 
-        UNUserNotificationCenter.current().delegate = notificationDelegate
+        #if os(iOS)
+            UNUserNotificationCenter.current().delegate = notificationDelegate
+        #endif
     }
 
     var body: some Scene {

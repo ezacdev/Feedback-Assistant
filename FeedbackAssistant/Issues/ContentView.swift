@@ -31,7 +31,9 @@ struct ContentView: View {
         .onAppear(perform: askForReview)
         .onOpenURL(perform: viewModel.openURL)
         .userActivity(newIssueActivity) { activity in
-            activity.isEligibleForPrediction = true
+            #if !os(macOS)
+                activity.isEligibleForPrediction = true
+            #endif
             activity.title = "New Issue"
         }
         .onContinueUserActivity(newIssueActivity, perform: resumeActivity)
@@ -39,9 +41,9 @@ struct ContentView: View {
 
     func askForReview() {
         #if !DEBUG
-        if viewModel.shouldRequestReview {
-            requestReview()
-        }
+            if viewModel.shouldRequestReview {
+                requestReview()
+            }
         #endif
     }
 

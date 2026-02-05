@@ -17,6 +17,7 @@ struct IssueView: View {
                         text: $issue.issueTitle,
                         prompt: Text("Enter the issue title here")
                     )
+                    .labelsHidden()
                     .font(.title)
 
                     Text(
@@ -47,6 +48,7 @@ struct IssueView: View {
                         prompt: Text("Enter the issue description here"),
                         axis: .vertical
                     )
+                    .labelsHidden()
                 }
             }
 
@@ -65,6 +67,7 @@ struct IssueView: View {
                 }
             }
         }
+        .formStyle(.grouped)
         .disabled(issue.isDeleted)
         .onReceive(issue.objectWillChange) { _ in
             dataController.queueSave()
@@ -74,7 +77,13 @@ struct IssueView: View {
             IssueViewToolbar(issue: issue)
         }
         .alert("Oops!", isPresented: $showingNotificationsError) {
-            Button("Check Settings", action: showAppSettings)
+            #if os(macOS)
+                SettingsLink {
+                    Text("Check Settings")
+                }
+            #else
+                Button("Check Settings", action: showAppSettings)
+            #endif
             Button("Cancel", role: .cancel) {}
         } message: {
             Text(
@@ -89,17 +98,19 @@ struct IssueView: View {
         }
     }
 
-    func showAppSettings() {
-        guard
-            let settingsURL = URL(
-                string: UIApplication.openNotificationSettingsURLString
-            )
-        else {
-            return
-        }
+    #if os(iOS)
+        func showAppSettings() {
+            guard
+                let settingsURL = URL(
+                    string: UIApplication.openNotificationSettingsURLString
+                )
+            else {
+                return
+            }
 
-        openURL(settingsURL)
-    }
+            openURL(settingsURL)
+        }
+    #endif
 
     func updateReminder() {
         dataController.removeReminders(for: issue)
