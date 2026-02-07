@@ -1,33 +1,41 @@
 import SwiftUI
 
-struct SidebarViewToolbar: View {
+struct SidebarViewToolbar: ToolbarContent {
     @EnvironmentObject var dataController: DataController
     @Binding var showingAwards: Bool
     @State private var showingStore = false
 
-    var body: some View {
+    var body: some ToolbarContent {
         #if DEBUG
-            Button {
-                dataController.deleteAll()
-                dataController.createSampleData()
-            } label: {
-                Label(LocalizedStringKey("ADD SAMPLES"), systemImage: "flame")
+            ToolbarItem(placement: .automatic) {
+                Button {
+                    dataController.deleteAll()
+                    dataController.createSampleData()
+                } label: {
+                    Label(
+                        LocalizedStringKey("ADD SAMPLES"),
+                        systemImage: "flame"
+                    )
+                }
             }
         #endif
 
-        Button(action: tryNewTag) {
-            Label("Add tag", systemImage: "plus")
-        }
-        .sheet(isPresented: $showingStore) {
-            StoreView()
-        }
-
-        Button {
-            showingAwards.toggle()
-        } label: {
-            Label(LocalizedStringKey("Show awards"), systemImage: "rosette")
+        ToolbarItem(placement: .automaticOrTrailing) {
+            Button(action: tryNewTag) {
+                Label("Add tag", systemImage: "plus")
+            }
         }
 
+        ToolbarItem(placement: .automaticOrLeading) {
+            Button {
+                showingAwards.toggle()
+            } label: {
+                Label(LocalizedStringKey("Show awards"), systemImage: "rosette")
+            }
+            .sheet(isPresented: $showingStore) {
+                StoreView()
+            }
+        }
     }
 
     func tryNewTag() {
@@ -36,8 +44,4 @@ struct SidebarViewToolbar: View {
         }
     }
 
-}
-
-#Preview {
-    SidebarViewToolbar(showingAwards: .constant(true))
 }

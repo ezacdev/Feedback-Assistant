@@ -10,6 +10,7 @@
 		16A6397A2F34C03B008DFB63 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16EEAB112F2CD95C00CDB8E9 /* WidgetKit.framework */; };
 		16A6397B2F34C03B008DFB63 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16EEAB132F2CD95C00CDB8E9 /* SwiftUI.framework */; };
 		16A639862F34C03C008DFB63 /* FeedbackAssistantWidgetMacExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 16A639792F34C03B008DFB63 /* FeedbackAssistantWidgetMacExtension.appex */; platformFilters = (macos, ); settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		16A639A72F34CBB0008DFB63 /* UPAWatch Watch App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 16A6399D2F34CBAF008DFB63 /* UPAWatch Watch App.app */; platformFilter = ios; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		16EEAB122F2CD95C00CDB8E9 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16EEAB112F2CD95C00CDB8E9 /* WidgetKit.framework */; };
 		16EEAB142F2CD95C00CDB8E9 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16EEAB132F2CD95C00CDB8E9 /* SwiftUI.framework */; };
 		16EEAB1F2F2CD95D00CDB8E9 /* FeedbackAssistantWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 16EEAB0F2F2CD95C00CDB8E9 /* FeedbackAssistantWidgetExtension.appex */; platformFilter = ios; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -37,6 +38,13 @@
 			remoteGlobalIDString = 16A639782F34C03B008DFB63;
 			remoteInfo = FeedbackAssistantWidgetMacExtension;
 		};
+		16A639A52F34CBB0008DFB63 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 164D4FCF2EF02AAC00815184 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 16A6399C2F34CBAF008DFB63;
+			remoteInfo = "UPAWatch Watch App";
+		};
 		16EEAB1D2F2CD95D00CDB8E9 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 164D4FCF2EF02AAC00815184 /* Project object */;
@@ -47,6 +55,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		16A639AB2F34CBB0008DFB63 /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				16A639A72F34CBB0008DFB63 /* UPAWatch Watch App.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		16EEAB242F2CD95D00CDB8E9 /* Embed Foundation Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -67,6 +86,7 @@
 		164D4FD72EF02AAC00815184 /* FeedbackAssistant.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FeedbackAssistant.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		16A639792F34C03B008DFB63 /* FeedbackAssistantWidgetMacExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = FeedbackAssistantWidgetMacExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		16A639962F34C0A9008DFB63 /* FeedbackAssistantWidgetMacExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FeedbackAssistantWidgetMacExtension.entitlements; sourceTree = "<group>"; };
+		16A6399D2F34CBAF008DFB63 /* UPAWatch Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "UPAWatch Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		16EEAB0F2F2CD95C00CDB8E9 /* FeedbackAssistantWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = FeedbackAssistantWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		16EEAB112F2CD95C00CDB8E9 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		16EEAB132F2CD95C00CDB8E9 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
@@ -108,6 +128,52 @@
 				Filters/Filter.swift,
 			);
 			target = 16A639782F34C03B008DFB63 /* FeedbackAssistantWidgetMacExtension */;
+		};
+		16A639CA2F34CBF9008DFB63 /* Exceptions for "FeedbackAssistant" folder in "UPAWatch Watch App" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				"/Localized: Awards/Awards.json",
+				AppDelegate.swift,
+				Assets/Assets.xcassets,
+				Assets/Colors.xcassets,
+				Awards/Award.swift,
+				Awards/AwardsView.swift,
+				Configuration/Main.xcdatamodeld,
+				"DataController/DataController-Awards.swift",
+				"DataController/DataController-Notifications.swift",
+				"DataController/DataController-StoreKit.swift",
+				DataController/DataController.swift,
+				Delegates/NotificationDelegate.swift,
+				Editing/DetailView.swift,
+				Editing/IssueView.swift,
+				Editing/IssueViewToolbar.swift,
+				Editing/NoIssueView.swift,
+				Editing/TagsMenuView.swift,
+				"Extensions/Bundle-Decodable.swift",
+				"Extensions/CoreData/Issue-CoreDataHelpers.swift",
+				"Extensions/CoreData/Tag-CoreDataHelpers.swift",
+				FeedbackAssistantApp.swift,
+				Filters/Filter.swift,
+				Filters/SidebarView.swift,
+				Filters/SidebarViewModel.swift,
+				Filters/SidebarViewToolbar.swift,
+				Filters/SmartFilterRow.swift,
+				Filters/UserFilterRow.swift,
+				Issues/ContentView.swift,
+				Issues/ContentViewModel.swift,
+				Issues/ContentViewToolbar.swift,
+				Issues/IssueRow.swift,
+				Issues/IssueRowViewModel.swift,
+				Issues/IssueRowWatch.swift,
+				Issues/NewIssueButton.swift,
+				PlatformAdjustments/InlineNavigationBar.swift,
+				PlatformAdjustments/MacFrame.swift,
+				PlatformAdjustments/NumberBadge.swift,
+				PlatformAdjustments/ToolbarItemPlacement.swift,
+				SceneDelegate.swift,
+				Store/StoreView.swift,
+			);
+			target = 16A6399C2F34CBAF008DFB63 /* UPAWatch Watch App */;
 		};
 		16EEAB232F2CD95D00CDB8E9 /* Exceptions for "FeedbackAssistantWidget" folder in "FeedbackAssistantWidgetExtension" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
@@ -157,6 +223,7 @@
 			exceptions = (
 				16EEAB262F2CDC7200CDB8E9 /* Exceptions for "FeedbackAssistant" folder in "FeedbackAssistantWidgetExtension" target */,
 				16A639942F34C089008DFB63 /* Exceptions for "FeedbackAssistant" folder in "FeedbackAssistantWidgetMacExtension" target */,
+				16A639CA2F34CBF9008DFB63 /* Exceptions for "FeedbackAssistant" folder in "UPAWatch Watch App" target */,
 			);
 			path = FeedbackAssistant;
 			sourceTree = "<group>";
@@ -167,6 +234,11 @@
 				16A6398A2F34C03C008DFB63 /* Exceptions for "FeedbackAssistantWidgetMac" folder in "FeedbackAssistantWidgetMacExtension" target */,
 			);
 			path = FeedbackAssistantWidgetMac;
+			sourceTree = "<group>";
+		};
+		16A6399E2F34CBAF008DFB63 /* UPAWatch Watch App */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = "UPAWatch Watch App";
 			sourceTree = "<group>";
 		};
 		16EEAB152F2CD95C00CDB8E9 /* FeedbackAssistantWidget */ = {
@@ -212,6 +284,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		16A6399A2F34CBAF008DFB63 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		16EEAB0C2F2CD95C00CDB8E9 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -234,6 +313,7 @@
 				1648A18F2F1149A2001CE56E /* FeedbackAssistantUITests */,
 				16EEAB152F2CD95C00CDB8E9 /* FeedbackAssistantWidget */,
 				16A6397C2F34C03B008DFB63 /* FeedbackAssistantWidgetMac */,
+				16A6399E2F34CBAF008DFB63 /* UPAWatch Watch App */,
 				16EEAB102F2CD95C00CDB8E9 /* Frameworks */,
 				164D4FD82EF02AAC00815184 /* Products */,
 			);
@@ -247,6 +327,7 @@
 				1648A18E2F1149A2001CE56E /* FeedbackAssistantUITests.xctest */,
 				16EEAB0F2F2CD95C00CDB8E9 /* FeedbackAssistantWidgetExtension.appex */,
 				16A639792F34C03B008DFB63 /* FeedbackAssistantWidgetMacExtension.appex */,
+				16A6399D2F34CBAF008DFB63 /* UPAWatch Watch App.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -318,12 +399,14 @@
 				164D4FD52EF02AAC00815184 /* Resources */,
 				164D51432F05577700815184 /* SwiftLint */,
 				16EEAB242F2CD95D00CDB8E9 /* Embed Foundation Extensions */,
+				16A639AB2F34CBB0008DFB63 /* Embed Watch Content */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 				16EEAB1E2F2CD95D00CDB8E9 /* PBXTargetDependency */,
 				16A639852F34C03C008DFB63 /* PBXTargetDependency */,
+				16A639A62F34CBB0008DFB63 /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				164D4FD92EF02AAC00815184 /* FeedbackAssistant */,
@@ -356,6 +439,28 @@
 			productName = FeedbackAssistantWidgetMacExtension;
 			productReference = 16A639792F34C03B008DFB63 /* FeedbackAssistantWidgetMacExtension.appex */;
 			productType = "com.apple.product-type.app-extension";
+		};
+		16A6399C2F34CBAF008DFB63 /* UPAWatch Watch App */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 16A639A82F34CBB0008DFB63 /* Build configuration list for PBXNativeTarget "UPAWatch Watch App" */;
+			buildPhases = (
+				16A639992F34CBAF008DFB63 /* Sources */,
+				16A6399A2F34CBAF008DFB63 /* Frameworks */,
+				16A6399B2F34CBAF008DFB63 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				16A6399E2F34CBAF008DFB63 /* UPAWatch Watch App */,
+			);
+			name = "UPAWatch Watch App";
+			packageProductDependencies = (
+			);
+			productName = "UPAWatch Watch App";
+			productReference = 16A6399D2F34CBAF008DFB63 /* UPAWatch Watch App.app */;
+			productType = "com.apple.product-type.application";
 		};
 		16EEAB0E2F2CD95C00CDB8E9 /* FeedbackAssistantWidgetExtension */ = {
 			isa = PBXNativeTarget;
@@ -403,6 +508,9 @@
 					16A639782F34C03B008DFB63 = {
 						CreatedOnToolsVersion = 26.2;
 					};
+					16A6399C2F34CBAF008DFB63 = {
+						CreatedOnToolsVersion = 26.2;
+					};
 					16EEAB0E2F2CD95C00CDB8E9 = {
 						CreatedOnToolsVersion = 26.2;
 					};
@@ -428,6 +536,7 @@
 				1648A18D2F1149A2001CE56E /* FeedbackAssistantUITests */,
 				16EEAB0E2F2CD95C00CDB8E9 /* FeedbackAssistantWidgetExtension */,
 				16A639782F34C03B008DFB63 /* FeedbackAssistantWidgetMacExtension */,
+				16A6399C2F34CBAF008DFB63 /* UPAWatch Watch App */,
 			);
 		};
 /* End PBXProject section */
@@ -455,6 +564,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		16A639772F34C03B008DFB63 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		16A6399B2F34CBAF008DFB63 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -521,6 +637,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		16A639992F34CBAF008DFB63 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		16EEAB0B2F2CD95C00CDB8E9 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -548,6 +671,12 @@
 			);
 			target = 16A639782F34C03B008DFB63 /* FeedbackAssistantWidgetMacExtension */;
 			targetProxy = 16A639842F34C03C008DFB63 /* PBXContainerItemProxy */;
+		};
+		16A639A62F34CBB0008DFB63 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			platformFilter = ios;
+			target = 16A6399C2F34CBAF008DFB63 /* UPAWatch Watch App */;
+			targetProxy = 16A639A52F34CBB0008DFB63 /* PBXContainerItemProxy */;
 		};
 		16EEAB1E2F2CD95D00CDB8E9 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -938,6 +1067,81 @@
 			};
 			name = Release;
 		};
+		16A639A92F34CBB0008DFB63 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = NO;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "UPAWatch Watch App/UPAWatch Watch App.entitlements";
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = UQP96YXSBQ;
+				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = UPAWatch;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = "ezacd.Feedback-Assistant";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "ezacd.Feedback-Assistant.watchkitapp";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 26.0;
+			};
+			name = Debug;
+		};
+		16A639AA2F34CBB0008DFB63 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = NO;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "UPAWatch Watch App/UPAWatch Watch App.entitlements";
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = UQP96YXSBQ;
+				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = UPAWatch;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = "ezacd.Feedback-Assistant";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "ezacd.Feedback-Assistant.watchkitapp";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				VALIDATE_PRODUCT = YES;
+				WATCHOS_DEPLOYMENT_TARGET = 26.0;
+			};
+			name = Release;
+		};
 		16EEAB212F2CD95D00CDB8E9 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1059,6 +1263,15 @@
 			buildConfigurations = (
 				16A639882F34C03C008DFB63 /* Debug */,
 				16A639892F34C03C008DFB63 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		16A639A82F34CBB0008DFB63 /* Build configuration list for PBXNativeTarget "UPAWatch Watch App" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				16A639A92F34CBB0008DFB63 /* Debug */,
+				16A639AA2F34CBB0008DFB63 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

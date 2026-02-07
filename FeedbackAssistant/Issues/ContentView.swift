@@ -4,7 +4,9 @@ import SwiftUI
 
 struct ContentView: View {
 
-    @Environment(\.requestReview) var requestReview
+    #if !os(watchOS)
+        @Environment(\.requestReview) var requestReview
+    #endif
 
     @StateObject var viewModel: ViewModel
 
@@ -19,12 +21,18 @@ struct ContentView: View {
         List(selection: $viewModel.selectedIssue) {
             ForEach(viewModel.dataController.issuesForSelectedFilter()) {
                 issue in
-                IssueRow(issue: issue)
+                #if os(watchOS)
+                    IssueRowWatch(issue: issue)
+                #else
+                    IssueRow(issue: issue)
+                #endif
             }
             .onDelete(perform: viewModel.delete)
         }
         .navigationTitle("Issues")
-        .searchable(text: $viewModel.filterText, prompt: "Filter issues")
+        #if !os(watchOS)
+            .searchable(text: $viewModel.filterText, prompt: "Filter issues")
+        #endif
         .toolbar {
             ContentViewToolbar()
         }
@@ -36,11 +44,13 @@ struct ContentView: View {
             #endif
             activity.title = "New Issue"
         }
-        .onContinueUserActivity(newIssueActivity, perform: resumeActivity)
+        #if !os(watchOS)
+            .onContinueUserActivity(newIssueActivity, perform: resumeActivity)
+        #endif
     }
 
     func askForReview() {
-        #if !DEBUG
+        #if !os(watchOS) && !DEBUG
             if viewModel.shouldRequestReview {
                 requestReview()
             }

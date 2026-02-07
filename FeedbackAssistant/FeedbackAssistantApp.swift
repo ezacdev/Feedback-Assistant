@@ -1,6 +1,9 @@
 import CoreData
-import CoreSpotlight
 import SwiftUI
+
+#if canImport(CoreSpotlight)
+    import CoreSpotlight
+#endif
 
 @main
 struct FeedbackAssistantApp: App {
@@ -17,11 +20,12 @@ struct FeedbackAssistantApp: App {
     init() {
         let dc = DataController()
         _dataController = StateObject(wrappedValue: dc)
-        notificationDelegate.dataController = dc
-
-        #if os(iOS)
-            UNUserNotificationCenter.current().delegate = notificationDelegate
+        #if !os(watchOS)
+            notificationDelegate.dataController = dc
         #endif
+
+        UNUserNotificationCenter.current().delegate = notificationDelegate
+
     }
 
     var body: some Scene {
@@ -43,21 +47,26 @@ struct FeedbackAssistantApp: App {
                     dataController.save()
                 }
             }
-            .onContinueUserActivity(
-                CSSearchableItemActionType,
-                perform: loadSpotlightItem
-            )
+            #if canImport(CoreSpotlight) && !os(watchOS)
+                .onContinueUserActivity(
+                    CSSearchableItemActionType,
+                    perform: loadSpotlightItem
+                )
+            #endif
         }
     }
-
-    func loadSpotlightItem(_ userActivity: NSUserActivity) {
-        if let uniqueIdentifier = userActivity.userInfo?[
-            CSSearchableItemActivityIdentifier
-        ] as? String {
-            dataController.selectedIssue = dataController.issue(
-                with: uniqueIdentifier
-            )
-            dataController.selectedFilter = .all
+    #if canImport(CoreSpotlight) && !os(watchOS)
+        func loadSpotlightItem(
+            _ userActivity: NSUserActivity
+        ) {
+            if let uniqueIdentifier = userActivity.userInfo?[
+                CSSearchableItemActivityIdentifier
+            ] as? String {
+                dataController.selectedIssue = dataController.issue(
+                    with: uniqueIdentifier
+                )
+                dataController.selectedFilter = .all
+            }
         }
-    }
+    #endif
 }

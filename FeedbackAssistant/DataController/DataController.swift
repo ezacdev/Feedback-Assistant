@@ -26,7 +26,9 @@ class DataController: ObservableObject {
 
     let defaults: UserDefaults
 
-    var spotlightDelegate: NSCoreDataCoreSpotlightDelegate?
+    #if !os(watchOS)
+        var spotlightDelegate: NSCoreDataCoreSpotlightDelegate?
+    #endif
 
     @Published var selectedFilter: Filter? = Filter.all
     @Published var selectedIssue: Issue?
@@ -153,15 +155,19 @@ class DataController: ObservableObject {
             if let description = self?.container.persistentStoreDescriptions
                 .first
             {
-                if let coordinator = self?.container.persistentStoreCoordinator
-                {
-                    self?.spotlightDelegate = NSCoreDataCoreSpotlightDelegate(
-                        forStoreWith: description,
-                        coordinator: coordinator
-                    )
+                #if !os(watchOS)
+                    if let coordinator = self?.container
+                        .persistentStoreCoordinator
+                    {
+                        self?.spotlightDelegate =
+                            NSCoreDataCoreSpotlightDelegate(
+                                forStoreWith: description,
+                                coordinator: coordinator
+                            )
 
-                    self?.spotlightDelegate?.startSpotlightIndexing()
-                }
+                        self?.spotlightDelegate?.startSpotlightIndexing()
+                    }
+                #endif
             }
 
             #if DEBUG
