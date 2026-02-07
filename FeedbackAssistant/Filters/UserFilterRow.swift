@@ -1,14 +1,15 @@
 import SwiftUI
 
 struct UserFilterRow: View {
-    var filter: Filter
     @ObservedObject var tag: Tag
+
+    var filter: Filter
     var rename: (Filter) -> Void
     var delete: (Filter) -> Void
 
     var body: some View {
         NavigationLink(value: filter) {
-            Label(filter.name, systemImage: filter.icon)
+            Label(filter.tag?.name ?? "No name", systemImage: filter.icon)
                 .numberBadge(filter.activeIssuesCount)
                 .contextMenu {
                     Button {
