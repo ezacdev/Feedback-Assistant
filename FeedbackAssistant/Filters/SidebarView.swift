@@ -22,8 +22,7 @@ struct SidebarView: View {
             Section(LocalizedStringKey("Tags")) {
                 ForEach(viewModel.tagFilters) { filter in
                     UserFilterRow(
-                        filter: filter,
-                        tag: filter.tag!,
+                        tag: filter.tag!, filter: filter,
                         rename: viewModel.rename,
                         delete: viewModel.delete
                     )
